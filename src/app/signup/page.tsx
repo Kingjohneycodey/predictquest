@@ -16,6 +16,8 @@ const SignUp = () => {
     confirmPassword: '',
   });
 
+  const [loading, setLoading] = useState(false)
+
   const [errors, setErrors] = useState<Partial<SignUpFormData>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,15 +44,20 @@ const SignUp = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validate()) {
-      console.log(formData);
-      // Here you would typically send formData to your API
-    }
+    setLoading(true)
+    setTimeout(()=>{
+        if (validate()) {
+            console.log(formData);
+            // Here you would typically send formData to your API
+          }   else {
+              setLoading(false)
+          }
+    }, 3000)
   };
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f0f0f0' }}>
-      <form onSubmit={handleSubmit} style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', width: '90%' }} className='md:w-[50% !important]'>
+      <form onSubmit={handleSubmit} style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', width: '90%' }} className='md:!w-[50%]'>
         <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Sign Up</h2>
 
         <div style={{ marginBottom: '15px' }}>
@@ -105,7 +112,7 @@ const SignUp = () => {
           type="submit"
           style={{ width: '100%', padding: '10px', borderRadius: '4px', backgroundColor: '#007bff', color: '#fff', fontWeight: 'bold', border: 'none' }}
         >
-          Sign Up
+          {loading ? "Loading..." : "Sign Up"}
         </button>
       </form>
     </div>
