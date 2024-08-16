@@ -1,9 +1,7 @@
-// src/app/page.tsx
+"use client"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as Dialog from '@radix-ui/react-dialog';
-
-const api_url = process.env.PUBLIC_API_URL;
 
 type Prediction = {
   id: number;
@@ -24,7 +22,7 @@ const Page: React.FC = () => {
 
   const fetchPredictions = async () => {
     try {
-      const response = await axios.get(`${api_url}/user/predictions`);
+      const response = await axios.get(`/api/user/predictions`);
       setPredictions(response.data);
     } catch (error) {
       console.error('Error fetching predictions:', error);
@@ -33,7 +31,7 @@ const Page: React.FC = () => {
 
   const handleAddPrediction = async () => {
     try {
-      await axios.post(`${api_url}/user/predictions`, formData);
+      await axios.post(`/api/user/predictions`, formData);
       fetchPredictions();
       setFormData({ title: '', details: '' });
       setIsDialogOpen(false);
@@ -44,7 +42,7 @@ const Page: React.FC = () => {
 
   const handleDeletePrediction = async (id: number) => {
     try {
-      await axios.delete(`${api_url}/user/predictions/${id}`);
+      await axios.delete(`/api/user/predictions/${id}`);
       fetchPredictions();
     } catch (error) {
       console.error('Error deleting prediction:', error);
@@ -54,7 +52,7 @@ const Page: React.FC = () => {
   const handleEditPrediction = async () => {
     if (editPrediction) {
       try {
-        await axios.put(`${api_url}/user/predictions/${editPrediction.id}`, formData);
+        await axios.put(`/api/user/predictions/${editPrediction.id}`, formData);
         fetchPredictions();
         setEditPrediction(null);
         setFormData({ title: '', details: '' });
