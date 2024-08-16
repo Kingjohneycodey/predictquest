@@ -128,7 +128,7 @@ export default function Home() {
               Welcome To Predict Quest
             </h1>
             <p className="mt-6 text-lg leading-8 text-white-500">
-           Connect with futo students. Join our community and empower your social life and academic journey with FutoHub.
+            Join our platform and show your analysis prowess.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
