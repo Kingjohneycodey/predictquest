@@ -11,10 +11,12 @@ const axiosInstance = axios.create({
 // Request interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Add Authorization header if token exists
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    // Access localStorage safely by checking if window is defined
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
     return config;
   },
@@ -32,6 +34,8 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     // Handle response error
+
+    console.log(error)
     if (error.response && error.response.status === 401) {
       // Example: handle unauthorized access
       console.error('Unauthorized access - redirecting to login');
