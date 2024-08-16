@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
@@ -25,6 +26,8 @@ const SignUp = () => {
   const [errors, setErrors] = useState<Partial<SignUpFormData>>({});
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
+
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -58,6 +61,8 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
 
+    
+
     if (validate()) {
       try {
         const response = await fetch("/api/signup", {
@@ -83,6 +88,10 @@ const SignUp = () => {
             password: "",
             confirmPassword: "",
           });
+
+          setTimeout(()=> {
+            router.push("/user/dashboard");
+          }, 2000)
         } else {
           const data = await response.json();
           toast.error(data.message || "Sign up failed!");
