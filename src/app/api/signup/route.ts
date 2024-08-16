@@ -36,13 +36,13 @@ export async function POST(request: Request) {
       );
     }
   } catch (error: any) {
-    const statusCode = error.response?.status || 500;
+    const statusCode = error?.response?.status || 500;
 
     // Log the error for debugging
-    console.error('Error:', error.response.data.error);
+    console.error('Error:', error?.response?.data?.error);
 
     return NextResponse.json(
-      { message: error.response?.data?.error || error.message || 'Internal Server Error' },
+      { message: error?.response?.data?.error || error?.message || 'Internal Server Error' },
       { status: statusCode }
     );
   }

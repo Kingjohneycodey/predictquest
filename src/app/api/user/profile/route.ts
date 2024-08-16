@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
-import { api_url, token } from '@/utils/config';
+import { api_url, getToken, } from '@/utils/config';
 
 export async function GET(request: Request) {
+    const token = getToken();
   try {
     // Fetch user profile from external API
     const apiResponse = await axios.get(`${api_url}/user/profile`, {
