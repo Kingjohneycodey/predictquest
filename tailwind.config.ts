@@ -17,25 +17,25 @@ const config: Config = {
         DEFAULT: {
           css: {
             h1: {
-              fontSize: theme('fontSize.4xl'),
+              fontSize: theme('fontSize.3xl'),
               fontWeight: theme('fontWeight.bold'),
               lineHeight: theme('lineHeight.tight'),
               color: theme('colors.gray.900'),
             },
             h2: {
-              fontSize: theme('fontSize.3xl'),
+              fontSize: theme('fontSize.2xl'),
               fontWeight: theme('fontWeight.semibold'),
               lineHeight: theme('lineHeight.tight'),
               color: theme('colors.gray.800'),
             },
             h3: {
-              fontSize: theme('fontSize.2xl'),
+              fontSize: theme('fontSize.xl'),
               fontWeight: theme('fontWeight.medium'),
               lineHeight: theme('lineHeight.snug'),
               color: theme('colors.gray.700'),
             },
             h4: {
-              fontSize: theme('fontSize.xl'),
+              fontSize: theme('fontSize.lg'),
               fontWeight: theme('fontWeight.medium'),
               lineHeight: theme('lineHeight.snug'),
               color: theme('colors.gray.600'),

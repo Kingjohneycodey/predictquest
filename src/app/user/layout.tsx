@@ -14,7 +14,7 @@ const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       {/* Header */}
       <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
         <button

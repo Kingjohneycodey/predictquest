@@ -2,8 +2,10 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
+    <div className='prose '>
         <h1>Predict on Featured Events</h1>
+
+        <h2>Coming soon..</h2>
         <div>
 
         </div>
