@@ -17,10 +17,10 @@ const NavLink = ({
   const isActive = pathname === href;
 
   return (
-    <Link href={href} className={`block py-2.5 px-4 rounded transition duration-200 ${
+    <Link href={href} className={`block py-2.5 px-4 rounded transition duration-200 flex items-center gap-2 mb-2 ${
         isActive
           ? "bg-gray-600 text-white"
-          : "text-gray-400 hover:bg-gray-600 hover:text-white"
+          : "text-white hover:bg-gray-600 hover:text-white"
       }`}>
         {children}
  

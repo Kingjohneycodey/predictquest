@@ -1,6 +1,10 @@
 "use client";
 import NavLink from "@/components/UI/NavLink";
 import React, { ReactNode, useState } from "react";
+import { BiTrendingUp } from "react-icons/bi";
+import { BsCash } from "react-icons/bs";
+import { FaCog, FaDashcube, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { MdDashboard, MdEvent } from "react-icons/md";
 
 interface UserLayoutProps {
   children: ReactNode;
@@ -70,25 +74,29 @@ const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
           </button>
           <nav>
             <NavLink href="/user/dashboard">
-              Dashboard
+            <MdDashboard /> Dashboard
             </NavLink>
+            <NavLink href="/user/events">
+             <MdEvent/> Events
+            </NavLink>
+            <NavLink href="/user/predictions">
+             <BiTrendingUp/> Predictions
+            </NavLink>
+            <NavLink href="/user/rewards">
+             <BsCash /> Rewards
+            </NavLink>
+            <NavLink href="/user/profile">
+             <FaUser /> Profile
+            </NavLink>
+            <NavLink href="/user/settings">
+             <FaCog/> Settings
+            </NavLink>
+
             <a
               href="#"
-              className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600"
+              className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600 flex items-center gap-2 fixed bottom-5"
             >
-              Settings
-            </a>
-            <a
-              href="#"
-              className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600"
-            >
-              Profile
-            </a>
-            <a
-              href="#"
-              className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600"
-            >
-              Logout
+              <FaSignOutAlt/> Logout
             </a>
           </nav>
         </aside>
