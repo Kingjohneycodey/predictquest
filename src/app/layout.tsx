@@ -6,7 +6,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Predict Quest",
-  description: "Welcome to Predict Quest",
+  description: "Welcome to Predict Quest, a social platform where you can predict the outcomes of events for fun ",
+  icons: {
+    icon: "/football.png", 
+    shortcut: "/football.png", 
+  },
 };
 
 export default function RootLayout({

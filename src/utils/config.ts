@@ -1,4 +1,4 @@
 
-export const api_url = "http://localhost:4000/api" 
+export const api_url = process.env.PUBLIC_API_URL 
 
-export const base_url = "http://localhost:4000" 
+export const base_url = process.env.PUBLIC_API_BASE_URL

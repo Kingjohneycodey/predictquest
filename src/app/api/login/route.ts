@@ -4,10 +4,10 @@ import { api_url } from '@/utils/config';
 
 export async function POST(request: Request) {
   try {
-    const { username, email, password } = await request.json();
+    const { email, password } = await request.json();
 
     // Basic validation
-    if (!username || !email || !password) {
+    if (!email || !password) {
       return NextResponse.json(
         { message: 'All fields are required!' },
         { status: 400 }
@@ -15,23 +15,19 @@ export async function POST(request: Request) {
     }
 
     // Simulate sending data to an external API
-    const apiResponse = await axios.post(`${api_url}/auth/signup`, {
-      username,
+    const apiResponse = await axios.post(`${api_url}/auth/login`, {
       email,
       password,
     });
 
-    console.log('Received response from external API:', apiResponse);
-
     if (apiResponse.status === 201) {
-      const { token, user } = apiResponse.data;
       return NextResponse.json(
-        { message: 'User created successfully!', token, user },
+        { message: 'Login successful!' },
         { status: 201 }
       );
     } else {
       return NextResponse.json(
-        { message: 'Failed to create user' },
+        { message: 'Failed to login user' },
         { status: apiResponse.status }
       );
     }

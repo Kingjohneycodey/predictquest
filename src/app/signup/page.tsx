@@ -67,8 +67,15 @@ const SignUp = () => {
           },
           body: JSON.stringify(formData),
         });
-
+    
         if (response.ok) {
+          const data = await response.json(); // Parse the JSON data from the response
+
+          console.log(data)
+    
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+    
           toast.success("Sign up successful!");
           setFormData({
             username: "",
@@ -88,6 +95,7 @@ const SignUp = () => {
     } else {
       setLoading(false);
     }
+    
   };
 
   return (
@@ -109,7 +117,7 @@ const SignUp = () => {
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           width: "90%",
         }}
-        className="md:!w-[50%]"
+        className="md:!w-[50%] lg:!w-[40%]"
       >
         <ToastContainer />
         <h2 style={{ textAlign: "center", marginBottom: "20px" }} className="text-2xl">Sign Up On Predict Quest</h2>
