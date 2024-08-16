@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as Dialog from '@radix-ui/react-dialog';
+import { getToken } from '@/utils/config';
 
 type Prediction = {
   _id: string;
@@ -22,12 +23,36 @@ const Page: React.FC = () => {
 
   const fetchPredictions = async () => {
     try {
-      const response = await axios.get(`/api/user/predictions`);
+      const response = await axios.get(`/api/user/predictions`, );
       setPredictions(response.data);
     } catch (error) {
       console.error('Error fetching predictions:', error);
     }
   };
+
+  // const token = getToken()
+
+  //  const fetchPredictions = async () => {
+  //   try {
+  //     const response = await fetch('/api/predictions', {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         // Include the token if needed
+  //         'Authorization': `Bearer ${token}` 
+  //       },
+  //     });
+  
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  
+  //     const data = await response.json();
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error('There was a problem with the fetch operation:', error);
+  //   }
+  // }
 
   const handleAddPrediction = async () => {
     try {

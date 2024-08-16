@@ -1,12 +1,22 @@
 // src/app/api/predictions/route.ts
 import { NextResponse } from 'next/server';
 import axios from 'axios';
-import { api_url, } from '@/utils/config';
+import { api_url, getToken, } from '@/utils/config';
 import axiosInstance from '@/utils/apiClient';
 
+
+
 export async function GET() {
+
+  const token = getToken()
   try {
-    const response = await axiosInstance.get(`/user/predictions`);
+    console.log(token)
+    
+    const response = await axios.get(`${api_url}/user/predictions`, {
+      headers: {
+        Authorization: `Bearer, ${token}`
+      }
+    } );
     return NextResponse.json(response.data);
   } catch (error: any) {
     const statusCode = error?.response?.status || 500;
