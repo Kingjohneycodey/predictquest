@@ -3,18 +3,20 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import { api_url, getToken, } from '@/utils/config';
 import axiosInstance from '@/utils/apiClient';
+import { getTokenFromRequest } from '@/utils/auth';
 
 
 
-export async function GET() {
 
-  const token = getToken()
+export async function GET(request: Request) {
+  const token = getTokenFromRequest(request)
+ 
   try {
     console.log(token)
-    
+
     const response = await axios.get(`${api_url}/user/predictions`, {
       headers: {
-        Authorization: `Bearer, ${token}`
+        Authorization: `Bearer ${token}`
       }
     } );
     return NextResponse.json(response.data);

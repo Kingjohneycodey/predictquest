@@ -16,21 +16,32 @@ const Page: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [formData, setFormData] = useState({ title: '', details: '' });
-
+  const token = getToken()
   useEffect(() => {
     fetchPredictions();
-  }, []);
+  }, [token]);
+
+   
 
   const fetchPredictions = async () => {
-    try {
-      const response = await axios.get(`/api/user/predictions`, );
-      setPredictions(response.data);
-    } catch (error) {
-      console.error('Error fetching predictions:', error);
+    if(token){
+      try {
+        const response = await axios.get(`/api/user/predictions`,{
+
+          headers: {
+            'Content-Type': 'application/json',
+            // Include the token if needed
+            'Authorization': `Bearer ${token}` 
+          },
+        });
+        setPredictions(response.data);
+      } catch (error) {
+        console.error('Error fetching predictions:', error);
+      }
     }
   };
 
-  // const token = getToken()
+
 
   //  const fetchPredictions = async () => {
   //   try {
