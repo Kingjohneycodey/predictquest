@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 type LoginFormData = {
   email: string;
@@ -20,6 +22,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<LoginFormData>>({});
   const [showPassword, setShowPassword] = useState(false);
+
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -71,6 +75,10 @@ const Login = () => {
             password: "",
            
           });
+
+          setTimeout(()=> {
+            router.push("/user/dashboard");
+          }, 2000)
         } else {
           const data = await response.json();
           toast.error(data.message || "Login failed!");
