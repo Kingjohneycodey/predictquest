@@ -1,12 +1,13 @@
-"use client"
-import React, { ReactNode, useState } from 'react';
+"use client";
+import NavLink from "@/components/UI/NavLink";
+import React, { ReactNode, useState } from "react";
 
 interface UserLayoutProps {
-    children: ReactNode;
-  }
+  children: ReactNode;
+}
 
-  const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -31,7 +32,13 @@ interface UserLayoutProps {
             />
           </svg>
         </button>
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <div className="flex lg:flex-1">
+          <a href="#" className="-m-1.5 p-1.5 flex items-center gap-3">
+            <img className="h-8 w-auto" src="/football.png" alt="" />
+
+            <span className="text-xl">Predict Quest</span>
+          </a>
+        </div>
         <div>User Profile</div>
       </header>
 
@@ -62,31 +69,41 @@ interface UserLayoutProps {
             </svg>
           </button>
           <nav>
-            <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">
+            <NavLink href="/user/dashboard">
               Dashboard
-            </a>
-            <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">
+            </NavLink>
+            <a
+              href="#"
+              className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600"
+            >
               Settings
             </a>
-            <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">
+            <a
+              href="#"
+              className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600"
+            >
               Profile
             </a>
-            <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600">
+            <a
+              href="#"
+              className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-600"
+            >
               Logout
             </a>
           </nav>
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 bg-gray-100 p-6 lg:ml-64">
-          {children}
+        <main className="flex-1 bg-gray-100 p-6">
+          <div className="min-h-[90vh]">{children}</div>
+
+          <footer className="text-gray-800 text-center">
+            © 2024 Predict Quest
+          </footer>
         </main>
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center p-4">
-        © 2024 Your Company
-      </footer>
     </div>
   );
 };
