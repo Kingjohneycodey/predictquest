@@ -6,6 +6,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 
 type LoginFormData = {
@@ -116,7 +117,7 @@ const Login = () => {
         className="md:!w-[50%] lg:!w-[40%]"
       >
         <ToastContainer />
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }} className="text-2xl">Login To Your Predict Quest Account</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }} className="text-2xl text-indigo-600">Login To Your Account</h2>
 
         <div style={{ marginBottom: "15px" }}>
           <label
@@ -176,8 +177,9 @@ const Login = () => {
                 top: "50%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
-                color: "#007bff",
+      
               }}
+              className="text-indigo-600"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -193,14 +195,19 @@ const Login = () => {
             width: "100%",
             padding: "10px",
             borderRadius: "4px",
-            backgroundColor: "#007bff",
+          
             color: "#fff",
             fontWeight: "bold",
             border: "none",
           }}
+          className="bg-indigo-600"
         >
           {loading ? "Loading..." : "Login"}
         </button>
+
+        <div className="mt-8">
+        Don't have an account? <Link href="/signup" className="text-indigo-600">Register</Link>
+      </div>
       </form>
     </div>
   );

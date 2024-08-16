@@ -6,6 +6,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 type SignUpFormData = {
   username: string;
@@ -129,7 +130,7 @@ const SignUp = () => {
         className="md:!w-[50%] lg:!w-[40%]"
       >
         <ToastContainer />
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }} className="text-2xl">Sign Up On Predict Quest</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }} className="text-2xl text-indigo-600">Sign Up On Predict Quest</h2>
 
         <div style={{ marginBottom: "15px" }}>
           <label
@@ -216,8 +217,9 @@ const SignUp = () => {
                 top: "50%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
-                color: "#007bff",
+           
               }}
+                    className="text-indigo-600"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -259,8 +261,9 @@ const SignUp = () => {
                 top: "50%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
-                color: "#007bff",
+      
               }}
+              className="text-indigo-600"
             >
               {showPassword1 ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -278,15 +281,22 @@ const SignUp = () => {
             width: "100%",
             padding: "10px",
             borderRadius: "4px",
-            backgroundColor: "#007bff",
+      
             color: "#fff",
             fontWeight: "bold",
             border: "none",
           }}
+          className="bg-indigo-600"
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
+
+        <div className="mt-8">
+        Already have an account? <Link href="/login" className="text-indigo-600">Login</Link>
+      </div>
       </form>
+
+     
     </div>
   );
 };

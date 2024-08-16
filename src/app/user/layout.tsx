@@ -1,9 +1,10 @@
 "use client";
 import NavLink from "@/components/UI/NavLink";
+import { getUser } from "@/utils/config";
 import React, { ReactNode, useState } from "react";
 import { BiTrendingUp } from "react-icons/bi";
 import { BsCash } from "react-icons/bs";
-import { FaCog, FaDashcube, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FaBell, FaCog, FaDashcube, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { MdDashboard, MdEvent } from "react-icons/md";
 
 interface UserLayoutProps {
@@ -13,10 +14,12 @@ interface UserLayoutProps {
 const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+
+  const user = getUser()
   return (
     <div className="min-h-screen flex flex-col ">
       {/* Header */}
-      <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
+      <header className="bg-gray-800 text-white p-4 flex justify-between items-center fixed top-0 left-0 w-full z-10">
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
           className="lg:hidden"
@@ -38,15 +41,15 @@ const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
         </button>
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5 flex items-center gap-3">
-            <img className="h-8 w-auto" src="/football.png" alt="" />
+            <img className="h-8 w-auto rounded-full" src="/football.png" alt="" />
 
             <span className="text-xl">Predict Quest</span>
           </a>
         </div>
-        <div> <img className="h-8 w-auto" src="/images/profile.jpg" alt="" /></div>
+        <div className="flex items-center gap-5"> <FaBell className="text-2xl hidden md:block" /> <img className="h-8 w-auto rounded-full" src="/images/profile.png" alt="" /> <span className="hidden md:block">{user && user.username}</span></div>
       </header>
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 mt-16">
         {/* Sidebar */}
         <aside
           className={`${
