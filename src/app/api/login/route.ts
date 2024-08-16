@@ -20,10 +20,11 @@ export async function POST(request: Request) {
       password,
     });
 
-    if (apiResponse.status === 201) {
+    if (apiResponse.status === 200) {
+      const { token, user } = apiResponse.data;
       return NextResponse.json(
-        { message: 'Login successful!' },
-        { status: 201 }
+        { message: 'Login successful!', token, user  },
+        { status: 200 }
       );
     } else {
       return NextResponse.json(
