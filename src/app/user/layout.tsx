@@ -43,7 +43,7 @@ const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
             <span className="text-xl">Predict Quest</span>
           </a>
         </div>
-        <div>User Profile</div>
+        <div> <img className="h-8 w-auto" src="/images/profile.jpg" alt="" /></div>
       </header>
 
       <div className="flex flex-1">

@@ -2,11 +2,11 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
+    <div className='prose'>
         
-        <h1>Rewards</h1>
+        <h2>Rewards</h2>
 
-        <h1>Coming soon...</h1>
+        <h3>Coming soon...</h3>
     </div>
   )
 }
