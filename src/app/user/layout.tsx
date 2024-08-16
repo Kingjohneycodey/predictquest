@@ -46,7 +46,8 @@ const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
             <span className="text-xl">Predict Quest</span>
           </a>
         </div>
-        <div className="flex items-center gap-5"> <FaBell className="text-2xl hidden md:block" /> <img className="h-8 w-auto rounded-full" src="/images/profile.png" alt="" /> <span className="hidden md:block">{user && user.username}</span></div>
+        <div className="flex items-center gap-5"> <FaBell className="text-2xl hidden md:block" /> <img className="h-8 w-auto rounded-full" src="/images/profile.png" alt="" /> <span className="hidden md:block">
+            </span></div>
       </header>
 
       <div className="flex flex-1 mt-16">

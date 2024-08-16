@@ -4,9 +4,9 @@ import axios from 'axios';
 import * as Dialog from '@radix-ui/react-dialog';
 
 type Prediction = {
-  id: number;
+  _id: string;
   title: string;
-  details: string;
+  description: string;
 };
 
 const Page: React.FC = () => {
@@ -40,7 +40,7 @@ const Page: React.FC = () => {
     }
   };
 
-  const handleDeletePrediction = async (id: number) => {
+  const handleDeletePrediction = async (id: string) => {
     try {
       await axios.delete(`/api/user/predictions/${id}`);
       fetchPredictions();
@@ -52,7 +52,7 @@ const Page: React.FC = () => {
   const handleEditPrediction = async () => {
     if (editPrediction) {
       try {
-        await axios.put(`/api/user/predictions/${editPrediction.id}`, formData);
+        await axios.put(`/api/user/predictions/${editPrediction._id}`, formData);
         fetchPredictions();
         setEditPrediction(null);
         setFormData({ title: '', details: '' });
@@ -82,14 +82,14 @@ const Page: React.FC = () => {
         </thead>
         <tbody>
           {predictions.map((prediction) => (
-            <tr key={prediction.id}>
+            <tr key={prediction._id}>
               <td className="py-2 px-4 border-b">{prediction.title}</td>
-              <td className="py-2 px-4 border-b">{prediction.details}</td>
+              <td className="py-2 px-4 border-b">{prediction.description}</td>
               <td className="py-2 px-4 border-b">
                 <button
                   onClick={() => {
                     setEditPrediction(prediction);
-                    setFormData({ title: prediction.title, details: prediction.details });
+                    setFormData({ title: prediction.title, details: prediction.description });
                     setIsEditDialogOpen(true);
                   }}
                   className="mr-2 bg-yellow-500 text-white py-1 px-2 rounded"
@@ -97,7 +97,7 @@ const Page: React.FC = () => {
                   Edit
                 </button>
                 <button
-                  onClick={() => handleDeletePrediction(prediction.id)}
+                  onClick={() => handleDeletePrediction(prediction._id)}
                   className="bg-red-500 text-white py-1 px-2 rounded"
                 >
                   Delete
